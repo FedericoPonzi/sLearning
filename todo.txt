@@ -1,4 +1,4 @@
-
+->Home: se l'utente è loggato deve essere reindirizzato.
 
 -> Corso:
     Finire la pagina del corso. Se l'utente non è loggato deve essere rediretto alla listacorsi. Se non è registrato al corso deve essere rediretto in una pagina
