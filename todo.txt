@@ -1,0 +1,8 @@
+
+
+-> Corso:
+    Finire la pagina del corso. Se l'utente non è loggato deve essere rediretto alla listacorsi. Se non è registrato al corso deve essere rediretto in una pagina
+        dove viene chiesto se vuole regsitrarsi. Magari cominciare abilitando l'accettazione di tutti gli utenti.
+
+-> Cominciare a creare l'admin panel.
+
