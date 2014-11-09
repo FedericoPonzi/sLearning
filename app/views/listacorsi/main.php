@@ -32,7 +32,7 @@
                 {
                     echo ('
                     <div class="post">
-                        <h2><a href="'. base_url('/index.php/corso_c/v/ ') . $corso->codice .'">');
+                        <h2><a href="'. base_url('/corso_c/v/ ') . $corso->codice .'">');
                     echo( $corso->titolo);
                     echo('</a></h2>
                             <p><span class="glyphicon glyphicon-time"></span> Anno accademico: ');

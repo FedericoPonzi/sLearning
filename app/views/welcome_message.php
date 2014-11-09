@@ -48,7 +48,7 @@
                 {
                     if(data == 0)
                     {
-                        window.location.replace("<?= base_url('index.php/lista_corsi'); ?>");
+                        window.location.replace("<?= base_url('lista_corsi'); ?>");
                     }
                     else
                     {
