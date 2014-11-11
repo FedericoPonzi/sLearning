@@ -227,27 +227,24 @@ alter table corso add foreign key (codice) references insegna(corsoId) deferrabl
 
 --------------------
 ------ Triggers:
-CREATE FUNCTION utente_comp_dis() RETURNS TRIGGER AS $utcompdis$ 
+
+CREATE FUNCTION utente_comp_dis() RETURNS TRIGGER AS $utcompdis$
 begin
-if( exists (select * from studente where id = new.id)) = (not exists (select * from professore where id = new.id)) THEN
-        RAISE EXCEPTION 'errore.';
-    END IF;
+    if ( not ( exists (select * from studente where id = new.id) = 
+    not exists (select * from professore where id = new.id))) THEN
+            RAISE EXCEPTION 'Errore: utente deve essere o studente o professore.';
+    END if;
     
     RETURN new;
 END;
 $utcompdis$ language plpgsql;
-
-
- 
-create trigger utentecompdis before insert or update
-on utente for each row execute procedure utente_comp_dis();
- 
 create constraint trigger utentecompdis
-before insert or update
+AFTER insert or update or delete
 on utente
 deferrable INITIALLY DEFERRED 
 for each row 
 execute procedure utente_comp_dis();
+
 
 
 ------------------
