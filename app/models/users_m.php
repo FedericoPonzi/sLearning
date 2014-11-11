@@ -28,6 +28,7 @@ class Users_m extends CI_Model
  
     public function register_user($nome, $cognome, $sex, $email, $password)
     {
+        
         $data = array 
         (
             'nome' => $nome,
@@ -44,6 +45,8 @@ class Users_m extends CI_Model
     public function register_student($nome, $cognome, $sex, $email, $password, $mailinglist)
     {
         $this->load->model('Permesso_M');
+        $this->db->trans_start();
+        
         $utenteid = $this->register_user($nome, $cognome, $sex, $email, $password);
         //$this->Permesso_M->set_default_permission(false, $this->db->insert_id());
         
@@ -55,7 +58,9 @@ class Users_m extends CI_Model
             'mailinglist' =>  $mailinglist ? "true" : "false"
         );
         $this->db->insert('studente', $data);
+        $this->db->trans_complete();
         return $this->db->insert_id();
+        
     }
     
     public function register_professore($nome, $sex, $email, $password, $biografia)
